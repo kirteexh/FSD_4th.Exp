@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "event-mgmt-api-001",
+		"name": "Event Management API",
+		"description": "Complete API collection for testing Event Management System RESTful APIs\n\nDeveloped for FSD Lab Experiment 4\n\nBase URL: http://localhost:5000",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Requests",
+			"item": [
+				{
+					"name": "GET All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events"
+							]
+						},
+						"description": "Retrieves all events from the database.\n\nExpected Status: 200 OK"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Event by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/events/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"1"
+							]
+						},
+						"description": "Retrieves a single event by its ID.\n\nExpected Status: 200 OK"
+					},
+					"response": []
+				},
+				{
+					"name": "GET API Root",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								""
+							]
+						},
+						"description": "Get API welcome message and available endpoints.\n\nExpected Status: 200 OK"
+					},
+					"response": []
+				}
+			],
+			"description": "GET requests to retrieve event data"
+		},
+		{
+			"name": "POST Requests",
+			"item": [
+				{
+					"name": "POST Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Music Festival 2024\",\n  \"date\": \"2024-12-20\",\n  \"location\": \"City Park\",\n  \"description\": \"Annual music festival with live bands\",\n  \"capacity\": 1000,\n  \"registered\": 0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events"
+							]
+						},
+						"description": "Creates a new event in the database.\n\nExpected Status: 201 Created"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Create Another Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Startup Meetup\",\n  \"date\": \"2024-11-15\",\n  \"location\": \"Innovation Hub\",\n  \"description\": \"Networking event for startup founders\",\n  \"capacity\": 50,\n  \"registered\": 12\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events"
+							]
+						},
+						"description": "Creates another event to test multiple creations.\n\nExpected Status: 201 Created"
+					},
+					"response": []
+				}
+			],
+			"description": "POST requests to create new events"
+		},
+		{
+			"name": "PUT Requests",
+			"item": [
+				{
+					"name": "PUT Update Event - Registered Count",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"registered\": 350\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/events/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"1"
+							]
+						},
+						"description": "Updates the registered count for an event.\n\nExpected Status: 200 OK"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Update Event - Full Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Tech Conference 2024 - Extended\",\n  \"date\": \"2024-12-16\",\n  \"location\": \"Grand Convention Center\",\n  \"description\": \"Extended annual technology conference with additional workshops\",\n  \"capacity\": 600,\n  \"registered\": 400\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/events/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"1"
+							]
+						},
+						"description": "Updates all fields of an event.\n\nExpected Status: 200 OK"
+					},
+					"response": []
+				}
+			],
+			"description": "PUT requests to update existing events"
+		},
+		{
+			"name": "DELETE Requests",
+			"item": [
+				{
+					"name": "DELETE Event by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/events/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"2"
+							]
+						},
+						"description": "Deletes an event by its ID.\n\nExpected Status: 200 OK"
+					},
+					"response": []
+				}
+			],
+			"description": "DELETE requests to remove events"
+		},
+		{
+			"name": "Error Handling Tests",
+			"item": [
+				{
+					"name": "GET Event Not Found (404)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/events/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"999"
+							]
+						},
+						"description": "Tests error handling when event ID doesn't exist.\n\nExpected Status: 404 Not Found"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Invalid ID Format (400)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/events/abc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"abc"
+							]
+						},
+						"description": "Tests error handling when ID format is invalid.\n\nExpected Status: 400 Bad Request"
+					},
+					"response": []
+				},
+				{
+					"name": "POST Missing Required Fields (400)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Incomplete Event\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events"
+							]
+						},
+						"description": "Tests validation error when required fields are missing.\n\nExpected Status: 400 Bad Request"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Event Not Found (404)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"registered\": 100\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/events/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"999"
+							]
+						},
+						"description": "Tests error when trying to update non-existent event.\n\nExpected Status: 404 Not Found"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Event Not Found (404)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/events/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"events",
+								"999"
+							]
+						},
+						"description": "Tests error when trying to delete non-existent event.\n\nExpected Status: 404 Not Found"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Invalid Route (404)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/invalid-route",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"invalid-route"
+							]
+						},
+						"description": "Tests 404 handler for invalid routes.\n\nExpected Status: 404 Not Found"
+					},
+					"response": []
+				}
+			],
+			"description": "Tests for error handling and validation"
+		}
+	]
+}
